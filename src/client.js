@@ -6,16 +6,16 @@ import { Provider, connect } from 'react-redux'
 
 import createHistory from 'history/createBrowserHistory'
 import { Route } from 'react-router'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 
 
 // Create a history of your choosing (we're using a browser history in this case)
-const history = createHistory()
+const history = createHistory();
 
 // Build the middleware for intercepting and dispatching navigation actions
-const middleware = routerMiddleware(history)
+const middleware = routerMiddleware(history);
 
 // Add the reducer to your store on the `router` key
 // Also apply our middleware for navigating
@@ -49,10 +49,10 @@ const Layout = (props) => {
 };
 
 function mapStateToProps(state, ownProps) {
-  return { router: state.router };
+  return { };
 }
 
-const LayoutContainer = connect(mapStateToProps)(Layout);
+const LayoutContainer = withRouter(connect(mapStateToProps)(Layout));
 
 ReactDOM.render(
   <Provider store={store}>
